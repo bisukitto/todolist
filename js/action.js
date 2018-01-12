@@ -18,14 +18,20 @@ $(document).ready(function(){
 			if (isNew) {
 				var todo = $(e.currentTarget).text();
 				todo = todo.trim();
-
 				if (todo.length>0){
-					todo = {
-						is_complete: false,
-						content: todo,
-					};
-					var li = todoTemplate(todo);
-				$(e.currentTarget).closest('li').before(li);
+				var order = $('#todo-list').find('li:not(.new)').length +1;
+				$.post("todo/create.php", {content: todo, order: order},
+					function (data, textStatus, jqXHR) {
+						todo = {
+							id: data.id,
+							is_complete: false,
+							content: todo,
+						};
+						var li = todoTemplate(todo);
+						$(e.currentTarget).closest('li').before(li);
+					},
+					"json"
+				);
 				}
 
 				$(e.currentTarget).empty();	
