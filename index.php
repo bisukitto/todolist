@@ -1,33 +1,10 @@
 <?php include('header.php') ?>
+<?php include('data.php'); ?>
 
   <div id="panel">
      <H1>ToDo List</H1>
       <div id="todo-list">
       <ul>
-        <li class="clearfix">
-          <div class="checkbox"></div>
-          <div class="content">Lorem, ipsum dolor.</div>
-          <div class="action">
-            <div class="delete">x</div>
-          </div>
-        </li>
-        
-        <li class="complete">
-          <div class="checkbox"></div>
-          <div class="content">Lorem, ipsum dolor.</div>
-          <div class="action">
-            <div class="delete">x</div>
-          </div>
-        </li>
-        
-        <li class="clearfix">
-          <div class="checkbox"></div>
-          <div class="content">Lorem, ipsum dolor.</div>
-          <div class="action">
-            <div class="delete">x</div>
-          </div>
-        </li>
-
         <li class="new">
           <div class="checkbox"></div>
           <div class="content" contenteditable="true"></div>

@@ -3,11 +3,14 @@ $(document).ready(function(){
 	var source = $('#todolist-template').html();
 	var todoTemplate = Handlebars.compile(source);
 	
-	// create
-	$('li.new').find('.content').blur(function(e){
-
+	// prepare all todo list items
+	var todoListUI = '';
+	$.each(todos, function(index, todo){
+		//var li = todoTemplate(todo);
+		todoListUI = todoListUI + todoTemplate(todo);
 	});
-
+	$('#todo-list').find('li.new').before(todoListUI);
+	
 	// enter editor mode
 	$('#todo-list')
 		.on('dblclick' ,'.content' ,function(e){
@@ -25,13 +28,11 @@ $(document).ready(function(){
 						todo = {
 							id: data.id,
 							is_complete: false,
-							content: todo,
+							content: todo
 						};
 						var li = todoTemplate(todo);
 						$(e.currentTarget).closest('li').before(li);
-					},
-					"json"
-				);
+					});
 				}
 
 				$(e.currentTarget).empty();	
